@@ -1,0 +1,27 @@
+{
+  "name": "bulls-cows-solver",
+  "version": "0.0.1",
+  "description": "Get all the possible answers for Bulls and Cows game, based on the history of guesses in one round.",
+  "main": "",
+  "scripts": {
+    "test": "qunit-cli -c bulls-cows-solver.js test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/frank-deng/bulls-cows-solver.git"
+  },
+  "keywords": [
+    "Game",
+    "Solver",
+    "Bulls and Cows"
+  ],
+  "author": "Frank Deng",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/frank-deng/bulls-cows-solver/issues"
+  },
+  "homepage": "https://github.com/frank-deng/bulls-cows-solver#readme",
+  "devDependencies": {
+    "qunit-cli": ""
+  }
+}
