@@ -1,6 +1,6 @@
 {
   "name": "bulls-cows-solver",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Get all the possible answers for Bulls and Cows game, based on the history of guesses in one round.",
   "main": "",
   "scripts": {
