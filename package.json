@@ -1,8 +1,8 @@
 {
   "name": "bulls-cows-solver",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Get all the possible answers for Bulls and Cows game, based on the history of guesses in one round.",
-  "main": "",
+  "main": "bulls-cows-solver.js",
   "scripts": {
     "test": "qunit-cli -c bulls-cows-solver.js test.js"
   },
