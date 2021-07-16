@@ -1,93 +1,81 @@
-console.log();
-var bulls_cows_solver = require('./bulls-cows-solver.js');
-QUnit.test("Test", function(assert) {
-	assert.deepEqual(bulls_cows_solver([
-			{guess:'1234', result:'1A3B'},
-		]),
-		[ '1342', '1423', '2314', '2431', '3124', '3241', '4132', '4213' ]
-	);
-	assert.strictEqual(bulls_cows_solver([]), undefined);
+const bulls_cows_solver = require('./bulls-cows-solver.test.js');
+const bullsCowsSolver=bulls_cows_solver.default;
+const {hasDuplicateDigit, isValidInput, compare}=bulls_cows_solver;
+const assert=require('assert');
+
+describe('Internal function test',function(){
+	it('hasDuplicateDigit()',function(){
+		assert.strictEqual(hasDuplicateDigit('1324'),false);
+		assert.strictEqual(hasDuplicateDigit('5678'),false);
+		assert.strictEqual(hasDuplicateDigit('1122'),true);
+		assert.strictEqual(hasDuplicateDigit('1231'),true);
+		assert.strictEqual(hasDuplicateDigit('1132'),true);
+		assert.strictEqual(hasDuplicateDigit('3211'),true);
+	});
+	it('compare()',function(){
+		assert.strictEqual(compare('1234', '5678'),'0A0B');
+		assert.strictEqual(compare('1234', '5671'),'0A1B');
+		assert.strictEqual(compare('1234', '5621'),'0A2B');
+		assert.strictEqual(compare('1234', '5321'),'0A3B');
+		assert.strictEqual(compare('1234', '4321'),'0A4B');
+		assert.strictEqual(compare('1234', '5674'),'1A0B');
+		assert.strictEqual(compare('1234', '2431'),'1A3B');
+		assert.strictEqual(compare('1324', '1234'),'2A2B');
+		assert.strictEqual(compare('1324', '1394'),'3A0B');
+		assert.strictEqual(compare('1234', '1234'),'4A0B');
+	});
+	it('isValidInput()',function(){
+		assert.strictEqual(isValidInput('1324', '0A2B'),true);
+		assert.strictEqual(isValidInput('1324', '0a2b'),true);
+		assert.strictEqual(isValidInput('1324', '3a0b'),true);
+		assert.strictEqual(isValidInput('5678', '1A4B'),false);
+		assert.strictEqual(isValidInput('1322', '0A2B'),false);
+	});
 });
-QUnit.test("Invalid Input Detection", function(assert) {
-	assert.throws(function(){bulls_cows_solver();}, /Invalid input./, "Detect invalid input.");
-	assert.throws(function(){bulls_cows_solver("1324");}, /Invalid input./, "Detect invalid input.");
-	assert.throws(function(){bulls_cows_solver(23432);}, /Invalid input./, "Detect invalid input.");
-	assert.throws(
-		function(){
-			bulls_cows_solver([
+describe('Main Function Test',function(){
+	it('Filter result',function(){
+		assert.deepStrictEqual(bullsCowsSolver([
 				{guess:'1234', result:'1A3B'},
-				{guess:'32a9',},
-				{guess:'3234', result:'1A3B'},
-			]);
-		},
-		/Input 2 is invalid./,
-		"Detect abnormal record."
-	);
-	assert.throws(
-		function(){
-			bulls_cows_solver([
-				{guess:'1234', result:'1A3B'},
-				{guess:'32a9', result:'0A0B'},
-				{guess:'3234', result:'1A3B'},
-			]);
-		},
-		/Input 2 is invalid./,
-		"Detect non-number input."
-	);
-	assert.throws(
-		function(){
-			bulls_cows_solver([
-				{guess:'1234', result:'1A3B'},
-				{guess:'678', result:'0A0B'},
-				{guess:'3234', result:'1A3B'},
-			]);
-		},
-		/Input 2 is invalid./,
-		"Detect number shorter than 4."
-	);
-	assert.throws(
-		function(){
-			bulls_cows_solver([
-				{guess:'1234', result:'1A3B'},
-				{guess:'67890', result:'0A0B'},
-				{guess:'3234', result:'1A3B'},
-			]);
-		},
-		/Input 2 is invalid./,
-		"Detect number longer than 4."
-	);
-	assert.throws(
-		function(){
-			bulls_cows_solver([
-				{guess:'1234', result:'1A3B'},
-				{guess:'5678', result:'0A0B'},
-				{guess:'3234', result:'1A3B'},
-				{guess:'1234', result:'1A3B'},
-			]);
-		},
-		/Input 3 is invalid./,
-		"Number with duplicated digit."
-	);
-	assert.throws(
-		function(){
-			bulls_cows_solver([
-				{guess:'1234', result:'1A3B'},
-				{guess:'1234', result:'1A4B'},
-				{guess:'1234', result:'2A1B'},
-			]);
-		},
-		/Input 2 is invalid./,
-		"Invalid guess result."
-	);
-	assert.throws(
-		function(){
-			bulls_cows_solver([
-				{guess:'1234', result:'1A3B'},
-				{guess:'4234', result:'1A4B'},
-				{guess:'1234', result:'2A1B'},
-			]);
-		},
-		/Input 2 is invalid./,
-		"Invalid number and guess result."
-	);
+			]),
+			[ '1342', '1423', '2314', '2431', '3124', '3241', '4132', '4213' ]
+		);
+	});
+	it('Empty input',function(){
+		assert.strictEqual(bullsCowsSolver([]), undefined);
+	});
+	it("Invalid Input Detection",async function(){
+		assert.throws(()=>bullsCowsSolver(), TypeError('Input must be an array'));
+		assert.throws(()=>bullsCowsSolver("1234"), TypeError('Input must be an array'));
+		assert.throws(()=>bullsCowsSolver(23543), TypeError('Input must be an array'));
+		assert.throws(()=>bullsCowsSolver([
+			{guess:'1234', result:'1A3B'},
+			{guess:'32a9',},
+			{guess:'3234', result:'1A3B'},
+		]), Error('Input 2 is invalid.'));
+		assert.throws(()=>bullsCowsSolver([
+			{result:'1A3B'},
+			{guess:'32a9',},
+			{guess:'3234', result:'1A3B'},
+		]), Error('Input 1 is invalid.'));
+		assert.throws(()=>bullsCowsSolver([
+			{guess:'1234', result:'1A3B'},
+			{guess:'32a9', result:'0A0B'},
+			{guess:'3234', result:'1A3B'},
+		]), Error('Input 2 is invalid.'));
+		assert.throws(()=>bullsCowsSolver([
+			{guess:'1234', result:'1A3B'},
+			{guess:'234', result:'0A0B'},
+			{guess:'3234', result:'1A3B'},
+		]), Error('Input 2 is invalid.'));
+		assert.throws(()=>bullsCowsSolver([
+			{guess:'1234', result:'1A3B'},
+			{guess:'23456', result:'0A0B'},
+			{guess:'3274', result:'1A3B'},
+		]), Error('Input 2 is invalid.'));
+		assert.throws(()=>bullsCowsSolver([
+			{guess:'1234', result:'1A3B'},
+			{guess:'2345', result:'0A0B'},
+			{guess:'3274', result:'1A4B'},
+		]), Error('Input 3 is invalid.'));
+	});
 });

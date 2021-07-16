@@ -2,12 +2,12 @@ const path = require('path');
 const nodeExternals = require('webpack-node-externals');
 module.exports = {
   mode: 'development',
-  entry: './src/linefold.js',
+  entry: './src/bulls-cows-solver.js',
   output: {
     path: path.resolve(__dirname),
-    filename: 'linefold.test.js',
-    library: 'linefold',
-    libraryTarget: 'umd'
+    filename: 'bulls-cows-solver.test.js',
+    library:'bullsCowsSolver',
+    libraryTarget:'umd'
   },
   target: 'node',
   externals: [nodeExternals()]
