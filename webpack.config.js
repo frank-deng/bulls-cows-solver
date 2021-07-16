@@ -20,18 +20,7 @@ module.exports = {
         use: {
           loader: "babel-loader",
           options: {
-            presets: [
-              [
-                "@babel/preset-env",
-                {
-                  targets: {
-                    chrome:55,
-                    ie:10
-                  },
-                  "bugfixes":true
-                }
-              ]
-            ]
+            presets: ["@babel/preset-env"]
           }
         },
         exclude: /node_modules/
