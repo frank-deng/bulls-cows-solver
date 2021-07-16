@@ -14,7 +14,7 @@ select,input[type=button],button{height:30px;position:relative;z-index:1000;}
 
 ribbon{
 	display:block;
-	position:absolute;
+	position:fixed;
 	top:0;
 	right:0;
 	background-color: #aa0000;
@@ -45,7 +45,7 @@ ribbon a{
 	}
 }
 		</style>
-		<script type='text/javascript' src='bulls-cows-solver.js'></script>
+		<script type='text/javascript' src='dist/bulls-cows-solver.js'></script>
 	</head>
 	<body>
 		<ribbon><a href='https://github.com/frank-deng/bulls-cows-solver/'>Fork me on GitHub</a></ribbon>
@@ -70,7 +70,6 @@ ribbon a{
 							<option value='2A1B'>2A1B</option>
 							<option value='2A2B'>2A2B</option>
 							<option value='3A0B'>3A0B</option>
-							<option value='4A0B'>4A0B</option>
 						</select>
 					</td>
 				</tr>
@@ -91,7 +90,6 @@ ribbon a{
 							<option value='2A1B'>2A1B</option>
 							<option value='2A2B'>2A2B</option>
 							<option value='3A0B'>3A0B</option>
-							<option value='4A0B'>4A0B</option>
 						</select>
 					</td>
 				</tr>
@@ -112,7 +110,6 @@ ribbon a{
 							<option value='2A1B'>2A1B</option>
 							<option value='2A2B'>2A2B</option>
 							<option value='3A0B'>3A0B</option>
-							<option value='4A0B'>4A0B</option>
 						</select>
 					</td>
 				</tr>
@@ -133,7 +130,6 @@ ribbon a{
 							<option value='2A1B'>2A1B</option>
 							<option value='2A2B'>2A2B</option>
 							<option value='3A0B'>3A0B</option>
-							<option value='4A0B'>4A0B</option>
 						</select>
 					</td>
 				</tr>
@@ -154,7 +150,6 @@ ribbon a{
 							<option value='2A1B'>2A1B</option>
 							<option value='2A2B'>2A2B</option>
 							<option value='3A0B'>3A0B</option>
-							<option value='4A0B'>4A0B</option>
 						</select>
 					</td>
 				</tr>
@@ -175,7 +170,6 @@ ribbon a{
 							<option value='2A1B'>2A1B</option>
 							<option value='2A2B'>2A2B</option>
 							<option value='3A0B'>3A0B</option>
-							<option value='4A0B'>4A0B</option>
 						</select>
 					</td>
 				</tr>
@@ -196,7 +190,6 @@ ribbon a{
 							<option value='2A1B'>2A1B</option>
 							<option value='2A2B'>2A2B</option>
 							<option value='3A0B'>3A0B</option>
-							<option value='4A0B'>4A0B</option>
 						</select>
 					</td>
 				</tr>
@@ -217,7 +210,6 @@ ribbon a{
 							<option value='2A1B'>2A1B</option>
 							<option value='2A2B'>2A2B</option>
 							<option value='3A0B'>3A0B</option>
-							<option value='4A0B'>4A0B</option>
 						</select>
 					</td>
 				</tr>
@@ -240,7 +232,7 @@ document.getElementById('form_bulls_cows_solver').onsubmit = function(e){
 		}
 	}
 	try {
-		var filter_result = bulls_cows_solver(input_all);
+		var filter_result = bullsCowsSolver(input_all);
 		solver_result.innerHTML = '';
 		if (undefined !== filter_result) {
 			for (var i = 0; i < filter_result.length; i++) {
