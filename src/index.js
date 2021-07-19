@@ -1,15 +1,11 @@
-import './index.less';
-
-document.body.removeAttribute('style');
 var solver_result = document.getElementById('solver_result');
 document.getElementById('form_bulls_cows_solver').addEventListener('submit',(e)=>{
 	e.preventDefault();
-	var guess_elem_all = document.getElementsByName('guess[]');
-	var result_elem_all = document.getElementsByName('result[]');
+	var target=e.target;
 	var input_all = new Array();
-	for (var i = 0; i < 8; i++) {
-		var guess = guess_elem_all[i].value;
-		var result = result_elem_all[i].value;
+	for (var i = 0; i < 16; i+=2) {
+		var guess = target[i].value;
+		var result = target[i+1].value;
 		if (guess) {
 			input_all.push({guess:guess, result:result});
 		}

@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   mode: 'production',
   entry: {
-    main:{
+    './dist/bulls-cows-solver':{
       import:'./src/bulls-cows-solver.js',
       library:{
         name: 'bullsCowsSolver',
@@ -17,9 +17,7 @@ module.exports = {
   },
   output:{
     path: __dirname,
-    filename(data){
-      return `${data.runtime}.js`;
-    }
+    filename:'[name].js'
   },
   module: {
     rules: [
@@ -37,10 +35,7 @@ module.exports = {
         test: /\.less$/,
         use: [
           {
-            loader:"style-loader"
-          },
-          {
-            loader:"css-loader"
+            loader:"raw-loader"
           },
           {
             loader:"postcss-loader",
