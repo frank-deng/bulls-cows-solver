@@ -1,17 +1,15 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   mode: 'production',
   entry: {
     main:[
-      './src/bulls-cows-solver.js'
+      './src/index.js'
     ]
   },
   output: {
-    path: path.resolve(__dirname,'dist'),
-    filename: 'bulls-cows-solver.js',
-    library:'bullsCowsSolver',
-    libraryExport:'default',
-    libraryTarget:'umd'
+    path: path.resolve(__dirname,'lib'),
+    filename: 'index.js'
   },
   module: {
     rules: [
@@ -26,5 +24,11 @@ module.exports = {
         exclude: /node_modules/
       },
     ]
-  }
+  },
+  plugins:[
+    new HtmlWebpackPlugin({
+      filename: path.resolve(__dirname,'index.html'),
+      template: 'src/index.ejs'
+    })
+  ]
 };
