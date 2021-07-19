@@ -1,0 +1,60 @@
+body{
+	max-width:800px;
+	margin:0 auto;
+	padding:40px 10px 10px 10px;
+	font-family:serif;
+	font-family:微软雅黑,sans;
+	text-align:center;
+}
+h1{
+	text-align:center;
+}
+select,input{
+    line-height:30px;
+    height:30px;
+    position:relative;
+    z-index:1000;
+    padding:0 4px;
+    box-sizing: border-box;
+}
+input[type=button],button{
+	height:30px;position:relative;z-index:1000;
+}
+#form_bulls_cows_solver{
+	margin:auto;
+}
+#form_bulls_cows_solver table{
+	margin:auto;
+}
+
+ribbon{
+	display:block;
+	position:fixed;
+	top:0;
+	right:0;
+	background-color: #aa0000;
+	box-shadow: 0 0 5px 2px #888888;
+	overflow: hidden;
+	user-select:none;
+	user-drag:none;
+	a{
+		font-size: 12px;
+		font-weight: bold;
+		overflow: hidden;
+		display: block;
+		color: #ffffff;
+		text-align: center;
+		text-decoration: none;
+		border-top: 1px solid #ffffff;
+		border-bottom: 1px solid #ffffff;
+		margin: 2px 0;
+		width: 260px;
+		line-height: 30px;
+	}
+}
+@media only screen and (min-width: 600px){
+	ribbon {
+		transform-origin:50px 50%;
+		transform:translate(83px, 0px) rotate(45deg);
+	}
+}

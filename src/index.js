@@ -1,5 +1,8 @@
+import './index.less';
+
 var solver_result = document.getElementById('solver_result');
-document.getElementById('form_bulls_cows_solver').onsubmit = function(e){
+document.getElementById('form_bulls_cows_solver').addEventListener('submit',(e)=>{
+	e.preventDefault();
 	var guess_elem_all = document.getElementsByName('guess[]');
 	var result_elem_all = document.getElementsByName('result[]');
 	var input_all = new Array();
@@ -25,4 +28,4 @@ document.getElementById('form_bulls_cows_solver').onsubmit = function(e){
 		alert(e);
 	}
 	return false;
-}
+});

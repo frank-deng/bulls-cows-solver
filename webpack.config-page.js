@@ -8,7 +8,7 @@ module.exports = {
     ]
   },
   output: {
-    path: path.resolve(__dirname,'lib'),
+    path: path.resolve(__dirname,'assets'),
     filename: 'index.js'
   },
   module: {
@@ -23,6 +23,33 @@ module.exports = {
         },
         exclude: /node_modules/
       },
+      {
+        test: /\.less$/,
+        use: [
+          {
+            loader:"style-loader"
+          },
+          {
+            loader:"css-loader",
+            options: {
+              importLoaders: 1
+            }
+          },
+          {
+            loader:"postcss-loader",
+            options: {
+              postcssOptions:{
+                plugins: {
+                  'cssnano': {}
+                }
+              }
+            }
+          },
+          {
+            loader:"less-loader"
+          }
+        ]
+      }
     ]
   },
   plugins:[
@@ -30,5 +57,5 @@ module.exports = {
       filename: path.resolve(__dirname,'index.html'),
       template: 'src/index.ejs'
     })
-  ]
+  ],
 };
