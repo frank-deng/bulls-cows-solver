@@ -27,7 +27,10 @@ module.exports = {
         test: /\.less$/,
         use: [
           {
-            loader:"raw-loader"
+            loader:"style-loader"
+          },
+          {
+            loader:"css-loader"
           },
           {
             loader:"postcss-loader",
@@ -49,7 +52,8 @@ module.exports = {
   plugins:[
     new HtmlWebpackPlugin({
       filename: path.resolve(__dirname,'index.html'),
-      template: 'src/index.ejs'
+      template: 'src/index.ejs',
+      inject:'body'
     })
   ],
 };
