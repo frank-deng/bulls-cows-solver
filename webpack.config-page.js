@@ -27,13 +27,7 @@ module.exports = {
         test: /\.less$/,
         use: [
           {
-            loader:"style-loader"
-          },
-          {
-            loader:"css-loader",
-            options: {
-              importLoaders: 1
-            }
+            loader:"raw-loader"
           },
           {
             loader:"postcss-loader",

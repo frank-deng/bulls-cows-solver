@@ -1,5 +1,3 @@
-import './index.less';
-
 var solver_result = document.getElementById('solver_result');
 document.getElementById('form_bulls_cows_solver').addEventListener('submit',(e)=>{
 	e.preventDefault();
