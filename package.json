@@ -4,7 +4,7 @@
   "description": "Get all the possible answers for Bulls and Cows game, based on the history of guesses in one round.",
   "main": "dist/bulls-cows-solver.js",
   "scripts": {
-    "build": "webpack-cli && webpack-cli -c webpack.config-page.js",
+    "build": "webpack-cli",
     "test": "webpack-cli -c webpack.config-test.js && mocha ./test.js"
   },
   "repository": {

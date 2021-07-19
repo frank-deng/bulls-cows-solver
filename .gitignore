@@ -39,3 +39,4 @@ jspm_packages
 *.o
 guessnum-stat
 bulls-cows-solver.test.js
+testpage.js
