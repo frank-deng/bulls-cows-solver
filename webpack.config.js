@@ -12,7 +12,7 @@ module.exports = {
         type: 'umd',
       }
     },
-    testpage:{
+    '__index__':{
       publicPath:'/',
       import:'./src/index.js'
     }
@@ -66,7 +66,10 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: path.resolve(__dirname,'index.html'),
       template: 'src/index.ejs',
-      inject:false
+      inject:false,
+      templateParameters:{
+        env:process.env
+      }
     })
   ],
 };
