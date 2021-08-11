@@ -39,11 +39,11 @@
 			<button>Calculate</button>
 		</form>
 		<p id='solver_result'>&nbsp;</p>
-<% if('development'==(env.NODE_ENV||'').trim()){ %>
-		<script src='__index__.js'></script>
-<% }else{ %>
-		<script><%=compilation.assets['__index__.js'].source()%></script>
-<% } %>
 	</body>
+<% if('development'==(env.NODE_ENV||'').trim()){ %>
+	<script src='__index__.js'></script>
+<% }else{ %>
+	<script><%=compilation.assets['__index__.js'].source()%></script>
+<% } %>
 </html>
 
