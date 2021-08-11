@@ -1,7 +1,5 @@
-const bulls_cows_solver = require('./bulls-cows-solver.test.js');
-const bullsCowsSolver=bulls_cows_solver.default;
-const {hasDuplicateDigit, isValidInput, compare}=bulls_cows_solver;
-const assert=require('assert');
+import assert from 'assert';
+import {hasDuplicateDigit, isValidInput, compare, default as bullsCowsSolver} from './src/bulls-cows-solver';
 
 describe('Internal function test',function(){
 	it('hasDuplicateDigit()',function(){
