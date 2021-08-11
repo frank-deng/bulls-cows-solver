@@ -4,6 +4,7 @@ module.exports = {
   mode: 'production',
   entry: {
     './dist/bulls-cows-solver':{
+      publicPath:'/dist/',
       import:'./src/bulls-cows-solver.js',
       library:{
         name: 'bullsCowsSolver',
@@ -12,12 +13,19 @@ module.exports = {
       }
     },
     testpage:{
+      publicPath:'/',
       import:'./src/index.js'
     }
   },
   output:{
     path: __dirname,
     filename:'[name].js'
+  },
+  devServer:{
+    static:__dirname,
+    liveReload:false,
+    open:true,
+    port:8082
   },
   module: {
     rules: [
