@@ -18,6 +18,7 @@ module.exports = {
     }
   },
   output:{
+    globalObject: 'this',
     path: __dirname,
     filename:'[name].js'
   },

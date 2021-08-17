@@ -37,3 +37,4 @@ jspm_packages
 .node_repl_history
 
 __index__.js
+__test__.js
